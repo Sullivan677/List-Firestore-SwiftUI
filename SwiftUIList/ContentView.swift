@@ -1,16 +1,20 @@
-//
-//  ContentView.swift
-//  SwiftUIList
-//
-//  Created by Sullivan De carli on 08/12/2020.
-//
-
 import SwiftUI
-
 struct ContentView: View {
+    
+    @ObservedObject private var viewModel = userViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(viewModel.users) { user in
+                VStack(alignment: .leading) {
+                    Text(user.name).font(.title)
+                    Text(user.surname).font(.subheadline)
+                }
+            }.navigationBarTitle("Users")
+            .onAppear() {
+                self.viewModel.fetchData()
+            }
+        }
     }
 }
 

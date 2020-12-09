@@ -1,14 +1,12 @@
-//
-//  SwiftUIListApp.swift
-//  SwiftUIList
-//
-//  Created by Sullivan De carli on 08/12/2020.
-//
-
 import SwiftUI
-
+import Firebase
 @main
 struct SwiftUIListApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
